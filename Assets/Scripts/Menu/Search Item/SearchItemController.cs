@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class SearchItemController
+public class SearchItemController : IPanelController
 {
     [SerializeField] private SearchItemView view;
 
@@ -17,6 +17,20 @@ public class SearchItemController
         view.AddListenerToSearchButton(SearchItem);
         view.AddListenerToUpdateButton(UpdateItem);
         view.AddListenerToDeleteButton(DeleteItem);
+    }
+
+
+    public void OpenPanel()
+    {
+        view.ResetInputField();
+        view.SetPanelActivation(true);
+        view.SetSubPanelActivation(false);
+    }
+
+    public void ClosePanel()
+    {
+        view.SetPanelActivation(false);
+        view.SetSubPanelActivation(false);
     }
 
     private void SearchItem()
