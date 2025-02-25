@@ -30,7 +30,8 @@ public class MenuController : MonoBehaviour
 
     public void InformationUpdate(string itemName)
     {
-        StopCoroutine(ShowInformationEnumerator);
+        if (ShowInformationEnumerator != null)
+            StopCoroutine(ShowInformationEnumerator);
         
         ShowInformationEnumerator = ShowInformation(itemName);
         StartCoroutine(ShowInformationEnumerator);
@@ -43,6 +44,8 @@ public class MenuController : MonoBehaviour
         yield return new WaitForSeconds(5);
 
         view.ChangeInformation(string.Empty);
+
+        ShowInformationEnumerator = null;
     }
 
     private void ChangePanel(Panel newPanel)
