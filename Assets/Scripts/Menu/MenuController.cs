@@ -24,6 +24,7 @@ public class MenuController : MonoBehaviour
         currentPanel = Panel.Create;
         ChangePanel(currentPanel);
 
+        view.ChangeInformation(string.Empty);
         view.AddListenerToChangePanelButton(() => ChangePanel(currentPanel == Panel.Create ? Panel.Search : Panel.Create));
     }
 
