@@ -50,7 +50,7 @@ public class MenuController : MonoBehaviour
 
     private void ChangePanel(Panel newPanel)
     {
-        if (currentPanel == Panel.Create)
+        if (newPanel == Panel.Create)
         {
             searchItemController.ClosePanel();
             createItemController.OpenPanel();
@@ -58,7 +58,7 @@ public class MenuController : MonoBehaviour
             view.ChangeTitle("Create Item");
             view.ChangePanelText("Search");
         }
-        else if (currentPanel == Panel.Search)
+        else if (newPanel == Panel.Search)
         {
             createItemController.ClosePanel();
             searchItemController.OpenPanel();
