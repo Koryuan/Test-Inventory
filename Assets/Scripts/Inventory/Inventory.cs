@@ -22,6 +22,40 @@ public class Inventory : MonoBehaviour
         Instance = this;
     }
 
+
+    #region CRUD Operation
+    public void CreateItem(string Name, string Description)
+    {
+        itemList.Items.Add(new ItemData(Name, Description));
+    }
+
+    public bool RetriveItem(string Name, out ItemData data)
+    {
+        data = itemList.Items.Find(x => x.Name == Name);
+        return data != null;
+    }
+
+    public bool UpdateItemDescription(string Name, string Description)
+    {
+        int itemIndex = itemList.Items.FindIndex(x => x.Name == Name);
+        if (itemIndex < 0) return false;
+
+        itemList.Items[itemIndex].Description = Description;
+        return true;
+    }
+
+    public bool DeleteItem(string Name)
+    {
+        int targetIndex = itemList.Items.FindIndex(x => x.Name == Name);
+        if (targetIndex < 0) return false;
+
+        itemList.Items.RemoveAt(targetIndex);
+        return true;
+    }
+    #endregion
+
+
+    #region Save Load
     private void SaveItemList()
     {
         try
@@ -51,4 +85,5 @@ public class Inventory : MonoBehaviour
         }
         return new ItemList<ItemData>();
     }
+    #endregion Save Load
 }

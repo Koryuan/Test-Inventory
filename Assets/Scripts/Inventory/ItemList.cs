@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 [Serializable]
-public struct ItemList<T>
+public class ItemList<T>
 {
     public List<T> Items;
 }

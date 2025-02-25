@@ -1,5 +1,5 @@
 ﻿[System.Serializable]
-public struct ItemData
+public class ItemData
 {
     public string Name;
     public string Description;
