@@ -24,7 +24,7 @@ public class MenuController : MonoBehaviour
         currentPanel = Panel.Create;
         ChangePanel(currentPanel);
 
-        view.AddListenerToChangePanelButton(() => ChangePanel(currentPanel == Panel.Create ? Panel.Create : Panel.Search));
+        view.AddListenerToChangePanelButton(() => ChangePanel(currentPanel == Panel.Create ? Panel.Search : Panel.Create));
     }
 
     public void InformationUpdate(string itemName)
@@ -50,11 +50,17 @@ public class MenuController : MonoBehaviour
         {
             searchItemController.ClosePanel();
             createItemController.OpenPanel();
+
+            view.ChangeTitle("Create Item");
+            view.ChangePanelText("Search");
         }
         else if (currentPanel == Panel.Search)
         {
             createItemController.ClosePanel();
             searchItemController.OpenPanel();
+
+            view.ChangeTitle("Search and Update Item");
+            view.ChangePanelText("Create");
         }
         currentPanel = newPanel;
     }
