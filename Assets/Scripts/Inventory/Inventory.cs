@@ -27,6 +27,7 @@ public class Inventory : MonoBehaviour
     public bool CreateItem(string Name, string Description)
     {
         itemList.Items.Add(new ItemData(Name, Description));
+        SaveItemList();
         return true;
     }
 
@@ -42,6 +43,7 @@ public class Inventory : MonoBehaviour
         if (itemIndex < 0) return false;
 
         itemList.Items[itemIndex].Description = Description;
+        SaveItemList();
         return true;
     }
 
@@ -51,6 +53,7 @@ public class Inventory : MonoBehaviour
         if (targetIndex < 0) return false;
 
         itemList.Items.RemoveAt(targetIndex);
+        SaveItemList();
         return true;
     }
     #endregion
@@ -64,9 +67,9 @@ public class Inventory : MonoBehaviour
             string saveData = JsonUtility.ToJson(itemList);
             File.WriteAllText(saveDestination, saveData);
         }
-        catch(Exception e)
+        catch
         {
-            
+            Debug.Log("Failed to save items");
         }
     }
 
@@ -80,7 +83,7 @@ public class Inventory : MonoBehaviour
             itemList = JsonUtility.FromJson<ItemList<ItemData>>(OldData);
             return itemList;
         }
-        catch(Exception e)
+        catch
         {
             Debug.Log("Failed to load items");
         }
