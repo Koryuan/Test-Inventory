@@ -13,4 +13,9 @@ public class MenuView
     {
         titleText.text = newTitle;
     }
+
+    public void ChangeInformation(string newInformation)
+    {
+        informationText.text = newInformation;
+    }
 }

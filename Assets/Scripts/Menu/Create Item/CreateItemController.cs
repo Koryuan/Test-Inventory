@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class CreateItemController : IPanelController
 {
     [SerializeField] private CreateItemView view;
