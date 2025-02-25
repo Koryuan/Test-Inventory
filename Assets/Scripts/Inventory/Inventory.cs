@@ -24,9 +24,10 @@ public class Inventory : MonoBehaviour
 
 
     #region CRUD Operation
-    public void CreateItem(string Name, string Description)
+    public bool CreateItem(string Name, string Description)
     {
         itemList.Items.Add(new ItemData(Name, Description));
+        return true;
     }
 
     public bool RetriveItem(string Name, out ItemData data)

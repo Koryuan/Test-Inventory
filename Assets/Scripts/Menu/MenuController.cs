@@ -10,7 +10,7 @@ public class MenuController : MonoBehaviour
 
     private void Awake()
     {
-        createItemController.Init();
+        createItemController.Init(InformationUpdate);
     }
 
     public void InformationUpdate(string itemName)

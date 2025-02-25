@@ -27,4 +27,7 @@ public class CreateItemView : IPanelView
         createButton.onClick.RemoveAllListeners();
         createButton.onClick.AddListener(() => OnCreate?.Invoke());
     }
+
+    public (string Name, string Description) GetValue()
+        => (nameInputField.text, descriptionInputField.text);
 }
